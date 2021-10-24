@@ -1,4 +1,7 @@
-import { VehicleStatus } from 'bluelinky/dist/interfaces/common.interfaces';
+import {
+  VehicleStatus,
+  VehicleLocation,
+} from 'bluelinky/dist/interfaces/common.interfaces';
 import { Vehicle } from 'bluelinky/dist/vehicles/vehicle';
 import { Characteristic, Logger, PlatformAccessory, Service } from 'homebridge';
 import { HyundaiConfig } from '../config';
@@ -18,6 +21,7 @@ export abstract class HyundaiService {
 
   constructor(protected readonly va: VehicleAccessory) {
     this.va.on('update', this.setCurrentState.bind(this));
+    this.va.on('updateLocation', this.setCurrentLocation.bind(this));
   }
 
   protected get service(): Service {
@@ -34,5 +38,11 @@ export abstract class HyundaiService {
   abstract name: string;
   abstract serviceType: string;
   abstract initService(): void;
-  abstract setCurrentState(status: VehicleStatus): void;
+  protected setCurrentState(status: VehicleStatus): void {
+    this.log.info('setCurrentState not implemented.', status);
+  }
+
+  protected setCurrentLocation(location: VehicleLocation): void {
+    this.log.info('setCurrentLocation not implemented.', location);
+  }
 }

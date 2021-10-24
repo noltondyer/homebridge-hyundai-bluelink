@@ -1,4 +1,7 @@
-import { VehicleStatus } from 'bluelinky/dist/interfaces/common.interfaces';
+import {
+  VehicleLocation,
+  VehicleStatus,
+} from 'bluelinky/dist/interfaces/common.interfaces';
 import { Vehicle } from 'bluelinky/dist/vehicles/vehicle';
 import { EventEmitter } from 'events';
 import { PlatformAccessory } from 'homebridge';
@@ -30,10 +33,17 @@ export class VehicleAccessory extends EventEmitter {
         .then(response => {
           this.platform.log.debug('Received status update', response);
           this.emit('update', <VehicleStatus>response);
-          this.isFetching = false;
+          return this.vehicle.location();
+        })
+        .then(response => {
+          this.platform.log.debug('Received location update', response);
+          this.emit('updateLocation', <VehicleLocation>response);
         })
         .catch(error => {
           this.platform.log.error('Status fetch error', error);
+        })
+        .finally(() => {
+          this.isFetching = false;
         });
     }
   }

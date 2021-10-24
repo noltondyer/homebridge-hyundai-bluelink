@@ -12,9 +12,15 @@ interface AuthConfig {
   region: REGION;
   brand: Brand;
 }
+interface HomeLocation {
+  latitude: number;
+  longitude: number;
+  radius: number;
+}
 interface VehicleConfig {
   vin: string;
   maxRange?: number;
+  homeLocation?: HomeLocation;
 }
 export interface HyundaiConfig extends PlatformConfig {
   credentials: AuthConfig;

@@ -61,6 +61,28 @@
               "type": "number",
               "title": "Maximum Range (mi/km)",
               "required": false
+            },
+            "homeLocation": {
+              "type": "object",
+              "title": "Home Location",
+              "required": false,
+              "properties": {
+                "latitude": {
+                  "type": "number",
+                  "title": "Latitude",
+                  "required": false
+                },
+                "longitude": {
+                  "type": "number",
+                  "title": "Longitude",
+                  "required": false
+                },
+                "radius": {
+                  "type": "number",
+                  "title": "Radius (km)",
+                  "required": false
+                }
+              }
             }
           }
         }
