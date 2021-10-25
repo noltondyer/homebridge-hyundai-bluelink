@@ -9,7 +9,7 @@ export class Location extends HyundaiService {
   private homeLongitude?: number;
   private homeRadius?: number;
   private isHome = false;
-  name = 'Location';
+  name = 'Home';
   serviceType = 'OccupancySensor';
 
   initService(): void {
