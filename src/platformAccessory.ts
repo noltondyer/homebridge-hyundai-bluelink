@@ -32,12 +32,17 @@ export class VehicleAccessory extends EventEmitter {
         .status({ refresh: false, parsed: true })
         .then(response => {
           this.platform.log.debug('Received status update', response);
-          this.emit('update', <VehicleStatus>response);
-          return this.vehicle.location();
+          const vehicleStatus = <VehicleStatus>response;
+          this.emit('update', vehicleStatus);
+          if (vehicleStatus.engine.ignition) {
+            return this.vehicle.location();
+          }
         })
         .then(response => {
-          this.platform.log.debug('Received location update', response);
-          this.emit('updateLocation', <VehicleLocation>response);
+          if (response) {
+            this.platform.log.debug('Received location update', response);
+            this.emit('updateLocation', <VehicleLocation>response);
+          }
         })
         .catch(error => {
           this.platform.log.error('Status fetch error', error);
