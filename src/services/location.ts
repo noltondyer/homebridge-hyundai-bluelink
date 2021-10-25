@@ -32,12 +32,14 @@ export class Location extends HyundaiService {
     ) {
       return;
     }
+
+    this.latitude = this.accessory.context.device.latitude = location.latitude;
+    this.longitude = this.accessory.context.device.longitude =
+      location.longitude;
+
     if (this.homeRadius === undefined) {
       return;
     }
-
-    this.latitude = location.latitude;
-    this.longitude = location.longitude;
 
     this.isHome = this.kilometersFromHome < this.homeRadius;
     this.service?.updateCharacteristic(
