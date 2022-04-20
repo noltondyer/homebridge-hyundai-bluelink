@@ -39,6 +39,12 @@
               { "title": "Kia", "enum": ["kia"] }
             ]
           },
+          "isGenesis": {
+            "title": "Genesis?",
+            "type": "boolean",
+            "required": false,
+            "default": false
+          },
           "pin": {
             "title": "Pin",
             "type": "string",
