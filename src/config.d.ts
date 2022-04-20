@@ -21,6 +21,7 @@ interface VehicleConfig {
   vin: string;
   maxRange?: number;
   homeLocation?: HomeLocation;
+  isGenesis: boolean;
 }
 export interface HyundaiConfig extends PlatformConfig {
   credentials: AuthConfig;

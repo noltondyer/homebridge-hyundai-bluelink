@@ -39,12 +39,6 @@
               { "title": "Kia", "enum": ["kia"] }
             ]
           },
-          "isGenesis": {
-            "title": "Genesis?",
-            "type": "boolean",
-            "required": false,
-            "default": false
-          },
           "pin": {
             "title": "Pin",
             "type": "string",
@@ -67,6 +61,12 @@
               "type": "number",
               "title": "Maximum Range (mi/km)",
               "required": false
+            },
+            "isGenesis": {
+              "title": "Genesis?",
+              "type": "boolean",
+              "required": false,
+              "default": false
             },
             "homeLocation": {
               "type": "object",
