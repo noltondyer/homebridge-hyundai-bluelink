@@ -28,3 +28,8 @@ export interface HyundaiConfig extends PlatformConfig {
   vehicles: VehicleConfig[];
   remoteStart: VehicleStartOptions;
 }
+
+export interface GenesisStartOptions extends VehicleStartOptions {
+  Ims: number;
+  consent: string;
+}
