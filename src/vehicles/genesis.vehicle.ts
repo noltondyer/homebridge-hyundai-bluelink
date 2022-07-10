@@ -51,6 +51,9 @@ export default class GenesisVehicle
         airCtrl: false,
         igniOnDuration: 10,
         airTempvalue: 70,
+        seatHeaterVentInfo: {
+           drvSeatHeatState: 5,
+        },
         defrost: false,
         heating1: false,
         consent: 'yes',
@@ -69,7 +72,7 @@ export default class GenesisVehicle
       'heating1': +mergedConfig.heating1, // use the unary method to convert to int
       'consent': mergedConfig.consent,
       'igniOnDuration': mergedConfig.igniOnDuration,
-      'seatHeaterVentInfo': null, // need to figure out what this is
+      'seatHeaterVentInfo': mergedConfig.seatHeaterVentInfo,
       'username': this.userConfig.username,
       'vin': this.vehicleConfig.vin,
     };
